@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>XHR Demo</title>
+
+  </head>
+
+  <body>
+      <script>
+      var url = "http://data.consumerfinance.gov/api/views.json";
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url);
+      xhr.addEventListener("load", function(evt){
+          var data = JSON.parse(this.responseText);
+          var body = document.body;
+          body.style.whiteSpace = "pre";
+          body.textContent = this.responseText;
+      });
+      xhr.send();
+
+      </script>
+  </body>
+</html>
