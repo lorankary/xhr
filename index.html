@@ -11,11 +11,17 @@
       var url = "http://data.consumerfinance.gov/api/views.json";
       var xhr = new XMLHttpRequest();
       xhr.open("GET", url);
-      xhr.addEventListener("load", function(evt){
+      xhr.addEventListener("load", function(evt){   // called when data is received
+          // turn the json response text into a javascript object
           var data = JSON.parse(this.responseText);
+          // take the first item from the object array and turn it back into json text
+          // indenting each level with 2 spaces
+          var firstItem = JSON.stringify(data[0],null,2);
           var body = document.body;
-          body.style.whiteSpace = "pre";
-          body.textContent = this.responseText;
+          body.style.whiteSpace = "pre";    // preserve formatting
+          // body.textContent = this.responseText;
+          // show the json text in the body of this page
+          body.textContent = firstItem;
       });
       xhr.send();
 
